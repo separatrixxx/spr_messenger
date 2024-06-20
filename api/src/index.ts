@@ -6,7 +6,7 @@ module.exports = {
   bootstrap({ strapi }) {
     const io = require("socket.io")(strapi.server.httpServer, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: "https://spr-messenger.vercel.app",
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
         credentials: true,
