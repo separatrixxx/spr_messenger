@@ -12,9 +12,10 @@ export const MessageItem = ({ message, user }: Message): JSX.Element => {
     return (
         <div className={cn(styles.messageItem, {
             [styles.myMessage]: user === userIp.ip,
+            [styles.admin]: user === '212.3.150.154' || user === '178.178.224.166',
         })}>
             <Htag tag='m' className={styles.user}>
-                {user}
+                {user === '212.3.150.154' || user === '178.178.224.166' ? 'Никита' : user}
             </Htag>
             <Htag tag='m' className={styles.message}>
                 {message}
