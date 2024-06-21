@@ -11,7 +11,7 @@ import { Message } from '../../interfaces/message.interface';
 import { io } from "socket.io-client";
 
 
-const socket = io("http://localhost:1337");
+const socket = io("https://messenger.banana.codes");
 
 export const MainPage = (): JSX.Element => {
     const router = useRouter();
