@@ -9,13 +9,16 @@ import cn from 'classnames';
 export const MessageItem = ({ message, user }: Message): JSX.Element => {
     const userIp = useSelector((state: AppState) => state.user.user);
 
+    const myIps: string[] = ['212.3.150.154', '178.178.224.166', '31.173.82.221', '31.173.80.253']
+    const isMe: boolean = myIps.includes(user);
+
     return (
         <div className={cn(styles.messageItem, {
             [styles.myMessage]: user === userIp.ip,
-            [styles.admin]: user === '212.3.150.154' || user === '178.178.224.166',
+            [styles.admin]: isMe,
         })}>
             <Htag tag='m' className={styles.user}>
-                {user === '212.3.150.154' || user === '178.178.224.166' ? 'Никита' : user}
+                {isMe ? 'Никита' : user}
             </Htag>
             <Htag tag='m' className={styles.message}>
                 {message}

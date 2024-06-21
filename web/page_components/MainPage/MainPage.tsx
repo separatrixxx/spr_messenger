@@ -1,6 +1,6 @@
 import styles from './MainPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocale } from '../../helpers/locale.helper';
 import { useRouter } from 'next/router';
@@ -20,12 +20,20 @@ export const MainPage = (): JSX.Element => {
     const messagesFromStore = useSelector((state: AppState) => state.messages.messages);
 
     const [messages, setMessages] = useState<Message[]>(messagesFromStore);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const scrollToBottom = () => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     useEffect(() => {
         setMessages(messagesFromStore);
 
         socket.on("message", (newMessage) => {
             setMessages((prevMessages) => [...prevMessages, newMessage]);
+            scrollToBottom();
         });
 
         return () => {
@@ -43,6 +51,7 @@ export const MainPage = (): JSX.Element => {
             };
             socket.emit("sendMessage", newMessage);
             setMessage('');
+            scrollToBottom();
         }
     };
 
@@ -60,6 +69,7 @@ export const MainPage = (): JSX.Element => {
                 <Input text={setLocale(router.locale).message + '...'} value={message}
                     error={false} onChange={(e) => setMessage(e.target.value)}
                     onKeyPress={handleKeyPress} />
+                <div ref={messagesEndRef} />
             </div>
         </>
     );
