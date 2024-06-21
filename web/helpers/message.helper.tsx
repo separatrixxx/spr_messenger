@@ -6,7 +6,7 @@ import { setMessages } from "../features/messages/messagesSlice";
 export async function getMessages(dispatch: any) {
     try {
         const { data : response }: AxiosResponse<MessageData> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/api/messages');
+            '/api/messages?pagination%5Blimit%5D=10000000');
 
         dispatch(setMessages(response.data));
     } catch (err) {
