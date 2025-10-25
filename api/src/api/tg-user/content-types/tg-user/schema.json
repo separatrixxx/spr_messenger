@@ -1,27 +1,26 @@
 {
   "kind": "collectionType",
-  "collectionName": "messages",
+  "collectionName": "tg_users",
   "info": {
-    "singularName": "message",
-    "pluralName": "messages",
-    "displayName": "Message",
-    "description": ""
+    "singularName": "tg-user",
+    "pluralName": "tg-users",
+    "displayName": "TgUser"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "message": {
-      "type": "text",
+    "username": {
+      "type": "string",
       "required": true
     },
-    "userFrom": {
+    "tgId": {
       "type": "integer",
       "required": true
     },
-    "userTo": {
-      "type": "integer",
+    "photoUrl": {
+      "type": "string",
       "required": true
     }
   }

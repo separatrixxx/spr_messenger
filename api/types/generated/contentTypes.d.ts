@@ -368,13 +368,15 @@ export interface ApiMessageMessage extends Schema.CollectionType {
     singularName: 'message';
     pluralName: 'messages';
     displayName: 'Message';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     message: Attribute.Text & Attribute.Required;
-    user: Attribute.String & Attribute.Required;
+    userFrom: Attribute.Integer & Attribute.Required;
+    userTo: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -386,6 +388,38 @@ export interface ApiMessageMessage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::message.message',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTgUserTgUser extends Schema.CollectionType {
+  collectionName: 'tg_users';
+  info: {
+    singularName: 'tg-user';
+    pluralName: 'tg-users';
+    displayName: 'TgUser';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    username: Attribute.String & Attribute.Required;
+    tgId: Attribute.Integer & Attribute.Required;
+    photoUrl: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tg-user.tg-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tg-user.tg-user',
       'oneToOne',
       'admin::user'
     > &
@@ -830,6 +864,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::message.message': ApiMessageMessage;
+      'api::tg-user.tg-user': ApiTgUserTgUser;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

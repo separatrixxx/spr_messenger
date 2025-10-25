@@ -2,6 +2,26 @@
  * message router
  */
 
-import { factories } from '@strapi/strapi';
+export default {
+    routes: [
+        {
+            method: 'GET',
+            path: '/messages/dialog/:userFrom/:userTo',
+            handler: 'message.dialog',
+            config: {
+                policies: [],
+                auth: false,
+            },
+        },
+        {
+            method: 'POST',
+            path: '/message',
+            handler: 'message.create',
+            config: {
+                policies: [],
+                middlewares: [],
+            },
+        },
+    ],
+};
 
-export default factories.createCoreRouter('api::message.message');
