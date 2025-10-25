@@ -1,0 +1,10 @@
+.myImage {
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 9999px;
+}
+
+.fallback {
+    background: var(--primary);
+    border-radius: 9999px;
+}

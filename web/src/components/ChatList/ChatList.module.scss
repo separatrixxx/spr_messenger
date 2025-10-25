@@ -1,0 +1,14 @@
+.chatList {
+    width: 90%;
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+
+    @media screen and (min-width: 580px) {
+        width: 70%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 50%;
+    }
+}

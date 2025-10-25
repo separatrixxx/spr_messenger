@@ -1,0 +1,46 @@
+.messageItem {
+	display: grid;
+
+	width: fit-content;
+	max-width: 70%;
+	padding: 12px 14px 10px 14px;
+
+	border-radius: 10px;
+	background: var(--lighter);
+	gap: 10px;
+	justify-self: left;
+
+	@media screen and (min-width: 580px) {
+		width: 50%;
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: 40%;
+	}
+
+	.message,
+	.date {
+		word-break: break-word;
+	}
+
+	.message {
+		font-size: medium;
+		font-weight: 600;
+		color: var(--dark);
+	}
+
+	.date {
+		font-size: small;
+		font-weight: 400;
+		color: var(--light2);
+	}
+}
+
+.myMessage {
+	justify-self: right;
+	background: var(--primary);
+
+	.message {
+		color: var(--light);
+	}
+}
