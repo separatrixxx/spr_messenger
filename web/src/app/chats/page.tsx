@@ -23,7 +23,7 @@ export default function Chats() {
     [allUsers, user]);
     
     // const searched = useMemo(
-    //     () => users.filter(u =>
+    //     () => users.filter(u =>ч
     //         u.username.toLowerCase().includes(query.toLowerCase())
     //     ),
     //     [users, query]
@@ -32,6 +32,7 @@ export default function Chats() {
     return (
         <main className={styles.main}>
             <Header username={user?.username} photoUrl={user?.photoUrl} isMe={true} />
+
             <ChatList chats={users} />
         </main>
     );

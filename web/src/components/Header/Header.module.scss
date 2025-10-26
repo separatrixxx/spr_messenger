@@ -8,6 +8,8 @@
     border-bottom: 1px solid var(--light);
     padding: 0 20px;
     gap: 16px;
+    overflow: hidden;
+    background: var(--white);
 }
 
 .headerNotMe {

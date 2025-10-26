@@ -1,10 +1,15 @@
 .messagesList {
 	display: grid;
-
+	grid-template-columns: auto;
 	width: 90%;
-	height: auto;
+	height: calc(100vh - 160px);
 	margin: 10px 0 80px 0;
 	gap: 15px;
+	overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 
 .noMessages {

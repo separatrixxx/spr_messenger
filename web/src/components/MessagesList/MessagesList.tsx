@@ -3,22 +3,10 @@
 import { MessagesListProps } from './MessagesList.props';
 import styles from './MessagesList.module.scss';
 import { MessageItem } from '../MessageItem/MessageItem';
-import { ReactElement, useEffect, useRef } from 'react';
+import { ReactElement } from 'react';
 
 
-export const MessagesList = ({ messages }: MessagesListProps): ReactElement => {
-    const messagesEndRef = useRef<HTMLDivElement>(null);
-
-    const scrollToBottom = () => {
-        if (messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-
+export const MessagesList = ({ messages, endRef }: MessagesListProps): ReactElement => {
     if (messages.length !== 0) {
         return (
             <div className={styles.messagesList}>
@@ -28,7 +16,7 @@ export const MessagesList = ({ messages }: MessagesListProps): ReactElement => {
                             userTo={m.userTo} createdAt={m.createdAt} />
                     ))
                 }
-                <div ref={messagesEndRef} />
+                <div ref={endRef} />
             </div>
         );
     } else {

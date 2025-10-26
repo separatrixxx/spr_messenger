@@ -2,16 +2,16 @@
 	display: grid;
 
 	width: fit-content;
-	max-width: 70%;
+	max-width: 80%;
 	padding: 12px 14px 10px 14px;
 
-	border-radius: 10px;
+	border-radius: 10px 10px 10px 0;
 	background: var(--lighter);
 	gap: 10px;
 	justify-self: left;
 
 	@media screen and (min-width: 580px) {
-		width: 50%;
+		width: 60%;
 	}
 
 	@media screen and (min-width: 1024px) {
@@ -39,6 +39,7 @@
 .myMessage {
 	justify-self: right;
 	background: var(--primary);
+	border-radius: 10px 10px 0 10px;
 
 	.message {
 		color: var(--light);

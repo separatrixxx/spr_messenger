@@ -62,7 +62,6 @@ export default function ClientChat({ userTo }: ClientChatInterface) {
 
         socket.on("message", (newMessage) => {
             setMessages((prevMessages) => [...prevMessages, newMessage]);
-            scrollToBottom();
         });
 
         return () => {
@@ -70,10 +69,14 @@ export default function ClientChat({ userTo }: ClientChatInterface) {
         };
     }, [oldMessages]);
 
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
     return (
-        <main ref={messagesEndRef} className={styles.main}>
+        <main className={styles.main}>
             <Header username={username} photoUrl={photoUrl} />
-            <MessagesList messages={messages || []} />
+            <MessagesList messages={messages || []} endRef={messagesEndRef} />
             <Input text={'Сообщение...'} value={message}
                 error={false} onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={handleKeyPress} />

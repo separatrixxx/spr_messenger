@@ -10,7 +10,7 @@
 
 	transition-duration: 300ms;
 
-	color: var(--primary);
+	color: var(--light);
 	border: 2px solid var(--light);
 	border-radius: 9999px;
 	outline: none;
@@ -32,6 +32,7 @@
 .input:hover,
 .input:focus {
 	border-color: var(--primary);
+	color: var(--primary);
 }
 
 .error_input,
