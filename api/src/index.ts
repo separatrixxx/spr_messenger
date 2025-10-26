@@ -6,7 +6,7 @@ module.exports = {
     bootstrap({ strapi }) {
         const io = require("socket.io")(strapi.server.httpServer, {
             cors: {
-                origin: "https://6xfw8l-2a02-6bf-8080-819--1-32.ru.tuna.am",
+                origin: "https://9zkgab-178-176-79-46.ru.tuna.am",
                 methods: ["GET", "POST"],
                 allowedHeaders: ["my-custom-header"],
                 credentials: true,
